@@ -17,7 +17,7 @@
     <header class="header">
         <div class="header-nav container">
             <a class="header-logo" href="index.html">Web<span class="header-logo-span">Studio</span></a>
-            <nav>
+            <nav class="nav">
                 <ul class="header-menu list">
                     <li class="header-item"><a class="header-item-link curent" href="./index.html">Студия</a>
                     </li>
@@ -48,8 +48,20 @@
         <section class="hero overlay">
             <div class="container">
                 <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                <button class="hero-btn">Заказать услугу</button>
+                <button data-modal-open class="hero-btn">Заказать услугу</button>
+                
+                <div data-modal class="backdrop is-hidden">
+
+                </div>
+                <div class="modal-form">
+                    <a data-modal-close class="modal-btn-close" href="#">
+                        <svg class="modal-btn-icon" width="30" height="30">
+                            <use href="./images/symbol-defs.svg#icon-close"></use>
+                        </svg></a>
+                </div>
+                
             </div>
+            
         </section>
     <!-- End of Section 1 -->
     <!-- Section 2 -->

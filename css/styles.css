@@ -30,7 +30,7 @@ img{
 body {
   font-family: "Roboto", sans-serif;
   color: var(--primary-text-color);
-  background: #ffffff;
+  background: var(--white-text-color);
 }
 .list {
   padding: 0;
@@ -59,7 +59,7 @@ body {
 }
 /* -----Header section------ */
 .header {
-  background: #ffffff;
+  background: var(--white-text-color);
   border-bottom: 1px solid #ececec;
 }
 .header-logo {
@@ -78,6 +78,7 @@ body {
 .header-logo-span {
   color: var(--title-text-color);
 }
+
 .header-nav {
   display: flex;
   align-items: center;
@@ -90,9 +91,19 @@ body {
   display: flex;
   align-items: center;
 }
+
+.header-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-item:nth-child(n+2) {
+  margin-left: 50px;
+}
 .header-item-link {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 
   color: var(--title-text-color);
   text-decoration: none;
@@ -104,18 +115,21 @@ body {
 .curent {
   color: var(--accent-text-color);
 }
+.curent::after{
+position: absolute;
+left: 0;
+bottom: 0;
+
+content: "";
+display: block;
+width: 100%;
+height: 4px;
+border-radius: 4px;
+background-color: var(--accent-text-color);
+}
 .header-contact {
   display: flex;
   margin-left: auto;
-}
-.header-item {
-  padding-top: 32px;
-  padding-bottom: 32px;
-  display: inline-flex;
-  align-items: center;
-}
-.header-item:nth-child(n+2) {
-  margin-left: 50px;
 }
 .header-contact-link {
   display: flex;
@@ -142,6 +156,7 @@ body {
 }
 /* -----Hero section----- */
 .overlay{
+  position: relative;
   max-width: 1600px;
   height: 600px;
   margin-left: auto;
@@ -150,6 +165,39 @@ body {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.backdrop{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5) ;
+}
+.backdrop-is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+.modal-form{
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  width:  528px;
+  height: 581px;
+  background: var(--white-text-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+  0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.modal-btn-close{
+  position: fixed;
+  top: 8px;
+  right: 8px;
+ 
 }
 
 .hero {
@@ -217,9 +265,7 @@ body {
   background-color: #F5F4FA;
   border-radius: 4px;
 }
-.features-icon{
-  
-}
+
 .features-title {
   font-weight: 700;
   font-size: 14px;
