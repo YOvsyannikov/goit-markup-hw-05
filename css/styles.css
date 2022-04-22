@@ -111,6 +111,7 @@ body {
 .header-item-link:hover,
 .header-item-link:focus {
   color: var(--accent-text-color);
+  transition-duration: 250ms;
 }
 .curent {
   color: var(--accent-text-color);
@@ -130,6 +131,7 @@ background-color: var(--accent-text-color);
 .header-contact {
   display: flex;
   margin-left: auto;
+  
 }
 .header-contact-link {
   display: flex;
@@ -142,6 +144,7 @@ background-color: var(--accent-text-color);
 .header-contact-link:hover,
 .header-contact-link:focus {
   color: var(--accent-text-color);
+  transition-duration: 250ms;
 }
 .header-contact-icon {
   margin-right: 10px;
@@ -150,6 +153,7 @@ background-color: var(--accent-text-color);
 .header-contact-icon:hover,
 .header-contact-icon:focus {
   fill: var(--accent-text-color);
+  transition-duration: 250ms;
 }
 .header-contact .header-item + .header-item{
   margin-left: 50px;
@@ -173,15 +177,19 @@ background-color: var(--accent-text-color);
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5) ;
+  transition-property: opacity 250ms, visibility 250ms;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.backdrop-is-hidden{
+
+.backdrop.is-hidden{
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 .modal-form{
   position: absolute;
   top: 50%;
-  right: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -194,9 +202,16 @@ background-color: var(--accent-text-color);
   border-radius: 4px;
 }
 .modal-btn-close{
-  position: fixed;
+  position: absolute;
   top: 8px;
   right: 8px;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 50%;
+  cursor: pointer;
  
 }
 
@@ -244,6 +259,7 @@ background-color: var(--accent-text-color);
   background: #2196f3;
   cursor: pointer;
   color: var(--white-text-color);
+  transition-duration: 250ms;
 }
 /* ------Feautures section------- */
 .features-list{
@@ -302,8 +318,30 @@ background-color: var(--accent-text-color);
   letter-spacing: 0.03em;
   color: var(--title-text-color);
 }
+.our-service-item{
+  position: relative;
+}
 .our-service-item:nth-child(n+2) {
   margin-left: 30px;
+}
+.our-service-direction{
+  position: absolute;
+  bottom: 0;
+  width: 370px;
+  height: 70px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  
+  color: #FFFFFF;
+  padding-top: 27px;
+  padding-bottom: 27px;
+
+  background: rgba(47, 48, 58, 0.8);
 }
 /* -----Our team section----- */
 .our-team {
@@ -391,9 +429,10 @@ background-color: var(--accent-text-color);
 .team-soc-link:focus {
   color: var(--white-text-color);
   background-color: var(--accent-text-color);
+  transition-duration: 250ms;
 }
-/* --------end team social links--------- */
-.footer-social-list {
+/* --------end team social links (class taken from footer)--------- */
+/* .footer-social-list {
   display: flex;
 }
 
@@ -418,7 +457,8 @@ background-color: var(--accent-text-color);
 .footer-social-link:focus {
   color: var(--white-text-color);
   background-color: var(--accent-text-color);
-}
+  transition-duration: 250ms;
+} */
 /* -----Clients----- */
 .client-title{
   font-weight: 700;
@@ -433,6 +473,7 @@ background-color: var(--accent-text-color);
 .client-list{
 display:flex;
 }
+
 .client-item{
   border: 1px solid #AFB1B8;
   border-radius: 4px;
@@ -454,6 +495,7 @@ display:flex;
   color: #2196f3;
   border: 1px solid #2196f3;
   border-radius: 4px;
+  transition-duration: 250ms;
 }
 .client-icon{
   fill: currentColor;
@@ -546,6 +588,7 @@ display: flex;
 .footer-social-link:focus {
   color: var(--white-text-color);
   background-color: var(--accent-text-color);
+  transition-duration: 250ms;
 }
 
 /* ------End of footer section------ */
@@ -583,7 +626,9 @@ display: flex;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
   0px 1px 2px rgba(0, 0, 0, 0.08),
   0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition-duration: 250ms;
 }
+/* ------projects cards-------- */
 .projects-list {
   display: flex;
   flex-wrap: wrap;
@@ -594,7 +639,12 @@ display: flex;
   margin-right: 30px;
   margin-bottom: 30px;
 
-  background: #ffffff;
+  background: var(--white-text-color);
+}
+.projects-item:hover .projects-cover-text,
+.projects-item:focus .projects-cover-text{
+transform: translateY(0);
+transition-duration: 250ms;
 }
 .projects-item:nth-last-child(-n + 3){
   margin-bottom: 0;
@@ -602,17 +652,42 @@ display: flex;
 .projects-item:nth-child(3n + 3){
   margin-right: 0;
 }
-.project-link{
+.projects-cover-wrap{
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-cover-text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  padding: 63px 24px;
+  text-align: center;
+  
+  letter-spacing: 0.03em;
+  color: var(--white-text-color);
+  background: rgba(33, 150, 243, 0.9);
+}
+
+.projects-link{
   display: block;
 }
-.project-link:hover,
+.projects-link:hover,
 .projects-link:focus {
   cursor: pointer;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+    transition-duration: 250ms;
 }
-.project-text{
+.projects-content {
   border-right: 1px solid #eeeeee;
   border-bottom: 1px solid #eeeeee;
   border-left: 1px solid #eeeeee;
@@ -638,4 +713,6 @@ display: flex;
   letter-spacing: 0.03em;
 
   color: var(--paragraph-text-color);
+  
 }
+/* ------ END CSS Styles for Portfolio page------ */
